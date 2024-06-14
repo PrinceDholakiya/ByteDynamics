@@ -1,0 +1,42 @@
+.textCenter{
+  text-align: center;
+}
+
+/*Login*/
+.bg-image-vertical {
+  position: relative;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: auto 70%;
+  }
+  
+  @media (min-width: 1025px) {
+  .h-custom-2 {
+  height: 70%;
+  }
+  }
+
+  .fas{
+    color: #709085;
+  }
+
+  .fw-normal{
+    letter-spacing: 1px;
+  }
+
+  .login-form{
+    width: 28rem;
+  }
+/*End Login*/
+
+/*Registration*/
+.register{
+  width: 28rem;
+  margin:0 auto;
+}
+
+.error {
+  color: rgb(247, 12, 12);
+  font-size: 12px;
+}
