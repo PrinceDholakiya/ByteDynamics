@@ -102,6 +102,7 @@ export default function SignUp(){
     }   
 
     return (
+        <div className="mainRegister">
         <div className="register">
         <form className="registerForm" onSubmit={handleSubmit}>
 
@@ -159,9 +160,12 @@ export default function SignUp(){
 
             <div className="pt-1 mb-4">
             <button data-mdb-button-init data-mdb-ripple-init className="btn btn-info btn-lg btn-block" type="submit">Register</button>
+            <button data-mdb-button-init data-mdb-ripple-init className="btn btn-info btn-lg btn-block" type="reset">Reset</button>
+            <button data-mdb-button-init data-mdb-ripple-init className="btn btn-info btn-lg btn-block" role="link" onClick="window.location='/'">Back</button>
             </div>
 
         </form>
+        </div>
         </div>
     );
 }

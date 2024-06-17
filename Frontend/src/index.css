@@ -28,6 +28,10 @@
   .login-form{
     width: 28rem;
   }
+
+  .container-fluid{
+    background-color:lightsteelblue;
+  }
 /*End Login*/
 
 /*Registration*/
@@ -36,7 +40,17 @@
   margin:0 auto;
 }
 
+.mainRegister{
+  margin:0 auto;
+  width: 48rem;
+  background-color: rgb(222, 220, 235);
+}
+
 .error {
   color: rgb(247, 12, 12);
   font-size: 12px;
+}
+
+.btn-block{
+  margin-left: 2em;
 }
