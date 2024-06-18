@@ -1,49 +1,44 @@
 import ErrorHandler from "../middlewares/error.js";
+import { Member } from "../models/member.model.js";
 import { Registration } from "../models/registration.model.js";
 
-const send_registration = async (req, res, next) => {
+const send_member = async (req, res, next) => {
   try {
     const {
+      member_id,
       email_id,
-      firstName,
-      lastName,
-      password,
+      memberName,
+      securityCode,
       phoneNumber,
-      address,
-      gender,
-      dateOfJoin,
-      DOB,
-      isAdmin
+      lastUpdateDate,
+      DOB
     } = req.body;
 
     // Check if the email already exists
-    const existingUser = await Registration.findOne({ email_id });
+    const existingUser = await Member.findOne({ member_id });
     if (existingUser) {
       res.status(400).json({
         success: false,
-        message: "Email already exists",
+        message: "Member is already exists",
       });
     }
 
     // Create a new user instance
-    const newRegistration = new Registration({
-      email_id,
-      firstName,
-      lastName,
-      password,
+    const newMemberRegistration = new Member({
+      member_id,
+      registration: email_id,
+      memberName,
+      securityCode,
       phoneNumber,
-      address,
-      gender,
-      dateOfJoin,
-      DOB,
-      isAdmin
+      lastUpdateDate,
+      DOB
     });
 
     // Save the new user to the database
-    await newRegistration.save();
+    await newMemberRegistration.save();
     res.status(201).json({
       success: true,
-      message: "User registered successfully",
+      message: "Member registered successfully",
     });
   } catch (error) {
     // Handle Mongoose validation errors
@@ -59,4 +54,4 @@ const send_registration = async (req, res, next) => {
   }
 };
 
-export default send_registration;
+export default send_member;
