@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../auth/AuthProvider";
+import { Navigate } from "react-router-dom";
 
 export default function SignUp(){
 
@@ -17,6 +19,11 @@ export default function SignUp(){
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
     const isAdmin = new Boolean(true);
+    const auth = useAuth();
+
+    if(auth.isAuthenticated){
+        return <Navigate to="/dashboard"/>
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -159,9 +166,7 @@ export default function SignUp(){
             </div>
 
             <div className="pt-1 mb-4">
-            <button data-mdb-button-init data-mdb-ripple-init className="btn btn-info btn-lg btn-block" type="submit">Register</button>
-            <button data-mdb-button-init data-mdb-ripple-init className="btn btn-info btn-lg btn-block" type="reset">Reset</button>
-            <button data-mdb-button-init data-mdb-ripple-init className="btn btn-info btn-lg btn-block" role="link" onClick="window.location='/'">Back</button>
+            <button data-mdb-button-init data-mdb-ripple-init className="btn btn-dark btn-lg btn-block" type="submit">Register</button>
             </div>
 
         </form>

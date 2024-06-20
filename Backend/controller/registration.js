@@ -20,7 +20,7 @@ const send_registration = async (req, res, next) => {
     const existingUser = await Registration.findOne({ email_id });
     if (existingUser) {
       res.status(400).json({
-        success: true,
+        success: false,
         message: "Email already exists",
       });
     }

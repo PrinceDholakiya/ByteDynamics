@@ -11,7 +11,7 @@ const registrationSchema = new mongoose.Schema({
   gender: String,
   dateOfJoin: { type: Date, default: Date.now }, // Set default value to current date
   DOB: Date,
-  isAdmin: Boolean
+  isAdmin: { type: Boolean, default: false },
 });
 
 export const Registration = mongoose.model('Registration', registrationSchema);
