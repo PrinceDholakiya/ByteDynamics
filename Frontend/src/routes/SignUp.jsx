@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthProvider";
 import { Navigate } from "react-router-dom";
+import MenuLoginLayout from "../layout/MenuLayout";
 
 export default function SignUp(){
 
@@ -20,6 +21,7 @@ export default function SignUp(){
     const navigate = useNavigate();
     const isAdmin = new Boolean(true);
     const auth = useAuth();
+    const pages = [{title:"Home", path:"/"}, {title:"Login", path:"/"}];
 
     if(auth.isAuthenticated){
         return <Navigate to="/dashboard"/>
@@ -78,8 +80,7 @@ export default function SignUp(){
             phoneNumber,
             address,
             gender,
-            dateOfBirth,
-            isAdmin
+            dateOfBirth
             },
             {
             headers: {
@@ -109,11 +110,12 @@ export default function SignUp(){
     }   
 
     return (
+        <MenuLoginLayout pages={pages}>
         <div className="mainRegister">
         <div className="register">
         <form className="registerForm" onSubmit={handleSubmit}>
 
-            <h3 className="fw-normal mb-3 pb-3 textCenter" >Register Form</h3>
+            <h4 className="fw-normal mb-3 pb-3 textCenter" >Register Form</h4>
 
             <div data-mdb-input-init className="form-outline mb-2">
             <input type="text" value={firstName} onChange={(e)=>setFirstName(e.target.value)} id="registerFormName" className="form-control form-control-lg" placeholder="First Name"/>
@@ -172,5 +174,6 @@ export default function SignUp(){
         </form>
         </div>
         </div>
+        </MenuLoginLayout>
     );
 }
