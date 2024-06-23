@@ -10,6 +10,7 @@ import logAccessRoute from "./routes/logAccessRoute.js";
 import memberRoute from "./routes/memberRoute.js";
 import authenticationRoute from "./routes/authenticationRoute.js";
 import reservationRoute from "./routes/reservationRoute.js";
+import creditRoute from "./routes/creditRoute.js";
 
 const app = express();
 dotenv.config({ path: "./config/config.env" });
@@ -32,6 +33,7 @@ app.use("/api/v1/logAccess", logAccessRoute); // logAccess
 app.use("/api/v1/member", memberRoute); // Member
 app.use("/api/v1/authentication", authenticationRoute); // Authentication
 app.use("/api/v1/reservation", reservationRoute); // Contact Us
+app.use("/api/v1/creditDetail", creditRoute); // Credit Detail
 
 app.get("/", (req, res, next) => {
   return res.status(200).json({
