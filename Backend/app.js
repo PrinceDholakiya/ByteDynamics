@@ -8,6 +8,8 @@ import loginRoute from "./routes/loginRoute.js";
 import premiumRoute from "./routes/premiumRoute.js";
 import logAccessRoute from "./routes/logAccessRoute.js";
 import memberRoute from "./routes/memberRoute.js";
+import authenticationRoute from "./routes/authenticationRoute.js";
+
 
 
 const app = express();
@@ -29,6 +31,7 @@ app.use("/api/v1/login", loginRoute); // Registration
 app.use("/api/v1/premium", premiumRoute); // Registration
 app.use("/api/v1/logAccess", logAccessRoute); // logAccess
 app.use("/api/v1/member", memberRoute); // Member
+app.use("/api/v1/authentication", authenticationRoute);
 
 
 

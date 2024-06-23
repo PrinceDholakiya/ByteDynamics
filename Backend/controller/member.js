@@ -1,6 +1,5 @@
 import ErrorHandler from "../middlewares/error.js";
 import { Member } from "../models/member.model.js";
-import { Registration } from "../models/registration.model.js";
 
 const send_member = async (req, res, next) => {
   try {
