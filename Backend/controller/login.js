@@ -9,13 +9,23 @@ const login = async (req, res, next) => {
 
   try {
     // Check if the user with the provided email exists
-    const registration = await Registration.findOne({ password, email_id });
+    const registration = await Registration.findOne({email_id });
 
     if (!registration) {
         res.status(401).json({
-            success: true,
+            success: false,
             message: "Invalid email or password",
           });
+    }
+
+    // Compare the provided password with the stored hashed password
+    const isPasswordMatch = await bcrypt.compare(password, registration.password);
+
+    if (!isPasswordMatch) {
+      return res.status(401).json({
+        success: false,
+        message: "Invalid email or password",
+      });
     }
 
     // If the email and password are correct, generate a JWT token

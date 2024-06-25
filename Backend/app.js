@@ -9,8 +9,8 @@ import premiumRoute from "./routes/premiumRoute.js";
 import logAccessRoute from "./routes/logAccessRoute.js";
 import memberRoute from "./routes/memberRoute.js";
 import authenticationRoute from "./routes/authenticationRoute.js";
-
-
+import adminRoute from "./routes/adminRoute.js";
+import subscriptionRoute from "./routes/subscriptionRoute.js";
 
 const app = express();
 dotenv.config({ path: "./config/config.env" });
@@ -27,13 +27,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/registration", registrationRoute); // Registration
-app.use("/api/v1/login", loginRoute); // Registration
-app.use("/api/v1/premium", premiumRoute); // Registration
+app.use("/api/v1/login", loginRoute); // login
+app.use("/api/v1/premium", premiumRoute); // premium
 app.use("/api/v1/logAccess", logAccessRoute); // logAccess
 app.use("/api/v1/member", memberRoute); // Member
 app.use("/api/v1/authentication", authenticationRoute);
-
-
+app.use("/api/v1/admin", adminRoute);
+app.use("/api/v1/subscription", subscriptionRoute);
 
 app.get("/", (req, res, next) => {
   return res.status(200).json({
