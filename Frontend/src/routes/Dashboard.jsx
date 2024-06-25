@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import OrderPopup from './OrderPopup';
+// import OrderPopup from './OrderPopup';
 import CategoryComponent from './CategoryComponent';
 import ItemComponent from './ItemComponent';
 import AlertComponent from './AlertComponent'; // Import for alerts
@@ -100,10 +100,10 @@ const Dashboard = ({ categories }) => {
           <button className="menuBtn1" onClick={() => setPopupOpen(true)}>
             View Order
           </button>
-          <OrderPopup
+          {/* <OrderPopup
             isOpen={isPopupOpen}
             onClose={() => setOrderPopupOpen(false)}
-          />
+          /> */}
           <button className="menuBtn1" onClick={handleLogout}>
             Logout
           </button>
