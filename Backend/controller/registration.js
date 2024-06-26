@@ -1,3 +1,6 @@
+// controllers/registration.js
+
+import bcrypt from "bcrypt"; // Import bcrypt for password hashing
 import ErrorHandler from "../middlewares/error.js";
 import { Registration } from "../models/registration.model.js";
 
@@ -19,18 +22,21 @@ const send_registration = async (req, res, next) => {
     // Check if the email already exists
     const existingUser = await Registration.findOne({ email_id });
     if (existingUser) {
-      res.status(400).json({
+      return res.status(400).json({
         success: false,
         message: "Email already exists",
       });
     }
+
+    // Encrypt the password before saving to database
+    const hashedPassword = await bcrypt.hash(password, 10); // bcrypt hash
 
     // Create a new user instance
     const newRegistration = new Registration({
       email_id,
       firstName,
       lastName,
-      password,
+      password: hashedPassword, // Store hashed password
       phoneNumber,
       address,
       gender,
