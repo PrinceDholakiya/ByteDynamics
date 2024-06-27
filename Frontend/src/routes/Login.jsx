@@ -9,16 +9,12 @@ import MenuLoginLayout from '../layout/MenuLayout';
 
 export default function Login(){
 
-    const[email, setEmail] = useState();
+    const[email_id, setEmail] = useState();
     const[password, setPassword] = useState();
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
     const auth = useAuth();
     const pages = [{title:"Home", path:"/"}, {title:"Register", path:"/signup"}];
-
-    if(auth.isAuthenticated){
-        return <Navigate to="/dashboard"/>
-    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,7 +22,7 @@ export default function Login(){
         // Validation logic
         let errors = {};
 
-        if (!email) {
+        if (!email_id) {
             errors.email = "Email is required";
         }
         if (!password) {
@@ -44,17 +40,11 @@ export default function Login(){
          // If no errors, proceed with form submission
         try {
             const { data } = await axios.post(
-                "http://localhost:4000/api/v1/login",
+                "http://localhost:4000/api/v1/login/",
                 {
-                email,
+                email_id,
                 password
                 },
-                {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                withCredentials: true,
-                }
             );
             toast.success(data.message);
             alert(data.message);
@@ -62,11 +52,19 @@ export default function Login(){
             // Clear form fields
             setEmail("");
             setPassword("");
+
+            /*const token = data.token;
+            const restaurantId = data.restaurantId;
+
+            // Save token to local storage or session storage
+            localStorage.setItem("token", token);
+            localStorage.setItem("restaurantId", restaurantId);
     
-            // Redirect to login page
-            navigate("/dashboard");
+            // Redirect to dashboard
+            navigate("/dashboard");*/
         } catch (error) {
             toast.error(error.response.data.message);
+            alert(error.response.data.message);
         }
     }    
 
@@ -84,7 +82,7 @@ export default function Login(){
                 <h3 className="fw-normal mb-3 pb-3" >Sign into your account</h3>
 
                 <div data-mdb-input-init className="form-outline mb-4">
-                <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} id="login-form-email" className="form-control form-control-lg" placeholder="Enter email"/>
+                <input type="email" value={email_id} onChange={(e)=>setEmail(e.target.value)} id="login-form-email" className="form-control form-control-lg" placeholder="Enter email"/>
                 {errors.email && (<span className="error">{errors.email}</span>)}
                 </div>
 

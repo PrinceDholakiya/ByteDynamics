@@ -30,21 +30,11 @@
   }
 
   .container-fluid{
-    background-color:lightsteelblue;
+    background-color:rgb(222, 228, 235);
   }
 /*End Login*/
 
 /*Registration*/
-.register{
-  width: 28rem;
-  margin:0 auto;
-}
-
-.mainRegister{
-  margin:0 auto;
-  width: 48rem;
-  background-color: rgb(222, 220, 235);
-}
 
 .error {
   color: rgb(247, 12, 12);
@@ -57,7 +47,28 @@
   justify-content: center;
 }
 
-.registerForm{
-  margin-top:2%;
-  font-family:'monospace';
+form {
+  width: 80%;
+  margin: auto;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.form-group {
+  flex: 0 0 48%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 0.5em;
+}
+
+.form-group input {
+  padding: 0.5em;
+  font-size: 1em;
 }
