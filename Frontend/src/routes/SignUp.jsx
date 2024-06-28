@@ -3,7 +3,6 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthProvider";
-import { Navigate } from "react-router-dom";
 import MenuLoginLayout from "../layout/MenuLayout";
 import logoImage from '../assets/Logo.jpeg';
 
@@ -19,13 +18,7 @@ export default function SignUp() {
   const [dateOfBirth, setDateOfBirth] = useState();
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
-  const isAdmin = new Boolean(true);
-  const auth = useAuth();
   const pages = [{ title: "Home", path: "/" }, { title: "Login", path: "/" },];
-
-  //if (auth.isAuthenticated) {
-  //  return <Navigate to="/dashboard" />;
- // }
 
   const validatePassword = (input) => 
   { 
@@ -148,7 +141,7 @@ export default function SignUp() {
     <MenuLoginLayout pages={pages}>
         
         <div className="container-fluid">
-            <div className="row">
+          <div className="row">
             <div className="col-sm-5 px-0 d-none d-sm-block">
                 <img src={logoImage} alt="Login image" />
             </div>
@@ -229,8 +222,8 @@ export default function SignUp() {
               </div>
             </form>
             </div>
-            </div>
-            </div>
+          </div>
+      </div>
 
 
     </MenuLoginLayout>
