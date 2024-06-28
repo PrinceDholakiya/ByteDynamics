@@ -97,6 +97,10 @@ export default function SignUp() {
       return;
     }
 
+    const dateBirth = dateOfBirth.split("/");
+    const DOB = new Date(dateBirth[2], dateBirth[1], dateBirth[0]);
+    console.log(DOB);
+
     // If no errors, proceed with form submission
     try {
       const { data } = await axios.post(
@@ -109,7 +113,7 @@ export default function SignUp() {
           phoneNumber,
           address,
           gender,
-          dateOfBirth,
+          DOB,
         },
         {
           headers: {

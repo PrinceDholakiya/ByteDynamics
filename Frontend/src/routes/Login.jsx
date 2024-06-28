@@ -53,15 +53,15 @@ export default function Login(){
             setEmail("");
             setPassword("");
 
-            /*const token = data.token;
-            const restaurantId = data.restaurantId;
+            const token = data.token;
+            const registrationId = data.registrationId;
 
             // Save token to local storage or session storage
             localStorage.setItem("token", token);
-            localStorage.setItem("restaurantId", restaurantId);
+            localStorage.setItem("registrationId", registrationId);
     
             // Redirect to dashboard
-            navigate("/dashboard");*/
+            navigate("/dashboard");
         } catch (error) {
             toast.error(error.response.data.message);
             alert(error.response.data.message);

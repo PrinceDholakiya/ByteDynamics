@@ -1,7 +1,7 @@
-// controllers/loginController.js
+// controllers/login.js
 
 import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+import bcrypt from "bcrypt"; // Import bcrypt for password comparison
 import { Registration } from "../models/registration.model.js";
 
 const login = async (req, res, next) => {
@@ -9,13 +9,13 @@ const login = async (req, res, next) => {
 
   try {
     // Check if the user with the provided email exists
-    const registration = await Registration.findOne({email_id });
+    const registration = await Registration.findOne({ email_id });
 
     if (!registration) {
-        res.status(401).json({
-            success: false,
-            message: "Invalid email or password",
-          });
+      return res.status(401).json({
+        success: false,
+        message: "Invalid email or password",
+      });
     }
 
     // Compare the provided password with the stored hashed password
@@ -37,11 +37,11 @@ const login = async (req, res, next) => {
 
     // Send the token in the response
     res.status(200).json({
-        token,
-        registrationId: registration._id,
-        success: true,
-        message: "Login Success",
-      });
+      token,
+      registrationId: registration._id,
+      success: true,
+      message: "Login Success",
+    });
 
   } catch (error) {
     // Handle errors
