@@ -11,9 +11,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import GppGoodIcon from '@mui/icons-material/GppGood';
 
-//const pages = [{title:"Home", path:"/"}, {title:"Register", path:"/signup"}];
-
-export default function MenuLoginLayout({children, pages})
+export default function MenuLayout({children, pages})
 {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 

@@ -3,9 +3,7 @@ import { useState } from 'react';
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from '../auth/AuthProvider';
-import { Navigate } from 'react-router-dom';
-import MenuLoginLayout from '../layout/MenuLayout';
+import MenuLayout from '../layout/MenuLayout';
 
 export default function Login(){
 
@@ -13,7 +11,6 @@ export default function Login(){
     const[password, setPassword] = useState();
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
-    const auth = useAuth();
     const pages = [{title:"Home", path:"/"}, {title:"Register", path:"/signup"}];
 
     const handleSubmit = async (e) => {
@@ -47,7 +44,7 @@ export default function Login(){
                 },
             );
             toast.success(data.message);
-            alert(data.message);
+            //alert(data.message);
     
             // Clear form fields
             setEmail("");
@@ -57,8 +54,8 @@ export default function Login(){
             const registrationId = data.registrationId;
 
             // Save token to local storage or session storage
-            localStorage.setItem("token", token);
-            localStorage.setItem("registrationId", registrationId);
+            window.localStorage.setItem("token", token);
+            window.localStorage.setItem("registrationId", registrationId);
     
             // Redirect to dashboard
             navigate("/dashboard");
@@ -69,7 +66,7 @@ export default function Login(){
     }    
 
     return (
-        <MenuLoginLayout pages={pages}>
+        <MenuLayout pages={pages}>
         <div className="container-fluid">
             <div className="row">
             <div className="col-sm-5 px-0 d-none d-sm-block">
@@ -103,7 +100,7 @@ export default function Login(){
             </div>
             </div>
         </div>
-        </MenuLoginLayout>
+        </MenuLayout>
         
     );
 }
